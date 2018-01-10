@@ -3,6 +3,8 @@ package com.loserbird.bookstore.dao;
 import com.loserbird.bookstore.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -23,4 +25,8 @@ public interface UserMapper {
     User findUserByEmail(String email);
 
     void updatePassword(@Param("username") String username, @Param("password")String password);
+
+    List<User> selectByUsernameEmail(@Param("username") String username, @Param("email") String email);
+
+    int deleteUser(Integer userId);
 }

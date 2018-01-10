@@ -144,4 +144,20 @@
         set password=#{password}
         where username=#{username}
     </update>
+
+    <select id="selectByUsernameEmail" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        from bs_user where role=0
+            <if test="username!=null and username.trim()!= ''">
+                and username like CONCAT(CONCAT('%',#{username}),'%')
+            </if>
+            <if test="email!=null and email.trim()!= ''">
+                and email like CONCAT(CONCAT('%',#{email}),'%')
+            </if>
+        order by create_time desc
+    </select>
+    <update id="deleteUser" parameterType="int">
+      update bs_user set role=2 where id=#{id}
+    </update>
 </mapper>

@@ -26,36 +26,48 @@
 <nav class="navbar navbar-inverse  navbar-static-top" role="navigation">
     <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">首页</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/book/list.do">首页</a>
     </div>
     <div>
         <ul class="nav navbar-nav">
             <li><a href="${pageContext.request.contextPath}/userInfo.jsp">个人资料</a></li>
             <li><a href="${pageContext.request.contextPath}/updatePassword.jsp">修改密码</a></li>
-            <c:if test="${user.role == 0 }">
+            <c:if test="${user.role == 1 }">
+                <li><a href="${pageContext.request.contextPath}/manage/user/list.do">用户管理</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     分类管理 <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="${pageContext.request.contextPath}/addCategory.jsp">添加分类</a></li>
-                    <li><a href="${pageContext.request.contextPath}/category?method=queryCategory">查看分类</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manage/category/queryall.do">查看分类</a></li>
                 </ul>
             </li>
-             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    用户管理 <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="${pageContext.request.contextPath}/admin?method=queryAllUser">查找用户</a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin?method=queryNotRegistUser">审核注册用户</a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin?method=queryBorrowHistory">查看借书记录</a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin?method=queryApplyList">审核借书申请</a></li>
-                </ul>
-            </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        图书管理 <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${pageContext.request.contextPath}/addBook.jsp">添加图书</a></li>
+                        <li><a href="${pageContext.request.contextPath}/manage/book/list.do">查看图书</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        订单管理 <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${pageContext.request.contextPath}/manage/order/list.do">所有订单</a></li>
+                        <li><a href="${pageContext.request.contextPath}/order_search.manage.jsp">搜索订单</a></li>
+                        <li><a href="${pageContext.request.contextPath}/manage/order/list.do?status=20">待发货</a></li>
+                        <li><a href="${pageContext.request.contextPath}/manage/order/list.do?status=40">待完结</a></li>
+                    </ul>
+                </li>
+
              </c:if>
              
-            <c:if test="${user.role == 1}">
+            <c:if test="${user.role == 0}">
+                <li><a href="${pageContext.request.contextPath}/cart/list.do">我的购物车</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         收获地址管理 <b class="caret"></b>
@@ -67,13 +79,14 @@
                 </li>
                 <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    业务办理 <b class="caret"></b>
+                    订单管理 <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="${pageContext.request.contextPath}/borrow?method=queryMyBorrow&&userId=${user.id}">我的借阅</a></li>
-                    <li><a href="${pageContext.request.contextPath}/borrow?method=queryMyBorrowHistory&&userId=${user.id}">我的借书历史</a></li>
-                    <li><a href="${pageContext.request.contextPath}/showCollect.jsp" target="middle">我的收藏夹</a></li>
-                    <li><a href="${pageContext.request.contextPath}/book?method=queryAllBook" target="middle">查看所有书籍</a></li>
+                    <li><a href="${pageContext.request.contextPath}/order/list.do">所有订单</a></li>
+                    <li><a href="${pageContext.request.contextPath}/order/list.do?status=10">待支付</a></li>
+                    <li><a href="${pageContext.request.contextPath}/order/list.do?status=20">待发货</a></li>
+                    <li><a href="${pageContext.request.contextPath}/order/list.do?status=0">已取消</a></li>
+                    <li><a href="${pageContext.request.contextPath}/order/list.do?status=40">待收货</a></li>
                 </ul>
                </li>
             </c:if>

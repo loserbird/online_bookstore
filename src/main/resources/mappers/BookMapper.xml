@@ -37,8 +37,8 @@
       create_time, update_time)
     values (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
       #{author,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, 
-      #{price,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{price,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, 1,
+      now(), now())
   </insert>
   <insert id="insertSelective" parameterType="com.loserbird.bookstore.pojo.Book" >
     insert into bs_book
@@ -106,10 +106,10 @@
         #{status,jdbcType=INTEGER},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
     </trim>
   </insert>
@@ -144,7 +144,7 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -163,4 +163,41 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+    <select id="search" resultMap="BaseResultMap" parameterType="com.loserbird.bookstore.pojo.Book">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from bs_book where 1=1
+            <if test="name != null and name.trim() != ''">
+                and name like CONCAT(CONCAT('%',#{name}),'%')
+            </if>
+            <if test="author != null and author.trim() != ''">
+                and author like CONCAT(CONCAT('%',#{author}),'%')
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+    </select>
+
+    <select id="searchOnsaleBook" resultMap="BaseResultMap" parameterType="com.loserbird.bookstore.pojo.Book">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from bs_book where status=1
+        <if test="name != null and name.trim() != ''">
+            and name like #{name}
+        </if>
+        <if test="author != null and author.trim() != ''">
+            and author like #{author}
+        </if>
+        <if test="categoryId != null">
+            and category_id = #{categoryId}
+        </if>
+    </select>
+
+    <update id="updownBook" parameterType="java.util.List">
+        update bs_book b set b.status=not b.status where b.id in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
 </mapper>

@@ -195,14 +195,14 @@ span{
     <div class="col-sm-offset-2 col-sm-4">
       <div class="radio">
         <label>
-          <input type="radio" name="role" value="1" checked="checked">普通用户
+          <input type="radio" name="role" value="0" checked="checked">普通用户
         </label>
       </div>
     </div>
      <div class="col-sm-6">
       <div class="radio">
         <label>
-          <input type="radio" name="role" value="0">管理员
+          <input type="radio" name="role" value="1">管理员
         </label>
       </div>
     </div>

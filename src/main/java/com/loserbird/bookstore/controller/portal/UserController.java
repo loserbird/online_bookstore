@@ -95,7 +95,7 @@ public class UserController {
             mav.addObject("registError", "两次密码不一致");
             mav.setViewName("/regist.jsp");
         }
-        user.setRole(1);
+        user.setRole(0);
         user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
         iUserService.addUser(user);
         mav.setViewName("redirect:/registSuccess.jsp");

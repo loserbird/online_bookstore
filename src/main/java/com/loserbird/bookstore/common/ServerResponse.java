@@ -1,7 +1,6 @@
 package com.loserbird.bookstore.common;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
 
@@ -10,7 +9,7 @@ import java.io.Serializable;
  * @Date: 2018/1/4
  * @Description:
  **/
-@JsonSerialize(include =  JsonSerialize.Inclusion.NON_NULL)
+//@JsonSerialize(include =  JsonSerialize.Inclusion.NON_NULL)
 //保证序列化json的时候,如果是null的对象,key也会消失
 public class ServerResponse<T> implements Serializable {
 
