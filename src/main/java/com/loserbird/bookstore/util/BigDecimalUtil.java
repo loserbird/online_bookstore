@@ -2,9 +2,7 @@ package com.loserbird.bookstore.util;
 
 import java.math.BigDecimal;
 
-/**
- * Created by geely
- */
+
 public class BigDecimalUtil {
 
     private BigDecimalUtil(){

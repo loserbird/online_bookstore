@@ -5,9 +5,7 @@ import com.loserbird.bookstore.common.ServerResponse;
 import com.loserbird.bookstore.pojo.Shipping;
 
 
-/**
- * Created by geely
- */
+
 public interface IShippingService {
 
     ServerResponse add(Integer userId, Shipping shipping);

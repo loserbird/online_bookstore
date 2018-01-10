@@ -14,9 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
-/**
- * Created by geely
- */
+
 
 @Controller
 @RequestMapping("/shipping/")

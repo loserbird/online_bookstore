@@ -12,9 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by geely
- */
+
 @Service("iCategoryService")
 public class CategoryServiceImpl implements ICategoryService {
 
