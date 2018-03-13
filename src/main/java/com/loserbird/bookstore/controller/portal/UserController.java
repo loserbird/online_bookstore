@@ -60,7 +60,7 @@ public class UserController {
     }
 
     //退出
-    @RequestMapping(value = "logout.do", method = RequestMethod.POST)
+    @RequestMapping(value = "logout.do")
     public ModelAndView logout(HttpSession session) {
         session.removeAttribute("user");
         return new ModelAndView("/login.jsp");

@@ -15,7 +15,7 @@
     padding: 0;
     width: 100%;
     height: 200px;
-    background-image: url('${pageContext.request.contextPath}/image/library2.jpg');
+    background-image: url('${pageContext.request.contextPath}/image/bookstore.jpg');
     background-repeat: no-repeat;  
     background-size: 100% 100%;  
   }

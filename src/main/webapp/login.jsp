@@ -212,7 +212,7 @@ span{
       <button type="submit" class="btn btn-info" onclick="clearError();">登录</button>
     </div>
      <div class=" col-sm-6">
-      <a href="regist.jsp" class="btn btn-success" role="button">注册</a>
+      <a href="${pageContext.request.contextPath}/regist.jsp" class="btn btn-success" role="button">注册</a>
     </div>
   </div>
 </form>

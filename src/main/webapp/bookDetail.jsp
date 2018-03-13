@@ -72,9 +72,6 @@
                 <div class="col-sm-offset-2 col-sm-2">
                     <input type="submit" class="btn btn-info" value="加入购物车"/>
                 </div>
-                <div class="col-sm-2">
-                    <a href="" class="btn btn-success" role="button">立即购买</a>
-                </div>
                 </c:if>
             </div>
         </div>
